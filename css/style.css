@@ -212,3 +212,9 @@ section.game {
   outline-offset: 2px;
   cursor: pointer;
 }
+
+@media (max-width: 450px) {
+  .game .box div {
+    font-size: 30px;
+  }
+}
