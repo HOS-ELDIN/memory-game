@@ -29,6 +29,7 @@ body {
   align-items: center;
   gap: 50px;
 }
+
 .start input {
   padding: 10px 20px;
   background-color: var(--mid-color);
@@ -259,6 +260,10 @@ section.game {
   color: var(--dark-color);
   font-weight: bold;
 }
+.result.show i {
+  font-size: 70px;
+  color: var(--dark-color);
+}
 
 .result.show button {
   padding: 10px 20px;
@@ -287,6 +292,9 @@ section.game {
     font-size: 30px;
   }
   .result.show p {
-    font-size: 30px;
+    font-size: 20px;
+  }
+  .result.show i {
+    font-size: 50px;
   }
 }
