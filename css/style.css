@@ -214,7 +214,10 @@ section.game {
   cursor: pointer;
 }
 
-@media (max-width: 450px) {
+@media (max-width: 500px) {
+  .head {
+    margin-top: 20px;
+  }
   .game .box div {
     font-size: 30px;
   }
