@@ -78,6 +78,7 @@ setTimeout(() => {
 
 
 window.addEventListener("click", (e) => {
+
   if (goodTries == 10) {
     game.classList.add("congrats");
     setTimeout(() => {

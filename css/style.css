@@ -149,6 +149,7 @@ section.game {
 .result {
   position: absolute;
   opacity: 0;
+  display: none;
 }
 .result.show {
   /* width: calc(100% - 40px);
