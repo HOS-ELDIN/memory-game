@@ -1,6 +1,23 @@
-// get user name from prompt
+let startWindow = document.querySelector(".start");
+let startInput = document.querySelector(".start input");
+let start = document.querySelector(".start button");
 let userName = document.querySelector(".name span");
-userName.innerHTML = prompt("Good Day To You? Enter Your Name", "anonymous");
+let boxs = document.querySelectorAll(".box");
+let game = document.querySelector("section");
+let result = document.querySelector(".result");
+let playAgain = document.querySelector(".result button");
+
+// get user name from prompt
+start.onclick = () => {
+  startWindow.style.display = "none";
+  userName.innerHTML = startInput.value;
+  setTimeout(() => {
+    game.classList.add("congrats");
+    setTimeout(() => {
+      game.classList.remove("congrats");
+    }, 2400);
+  }, 600);
+};
 
 //#####################################################
 //creating random array
@@ -15,7 +32,6 @@ for (let i = 0; randomArray.length < 20; i++) {
 
 //#####################################################
 //give random order to boxs
-let boxs = document.querySelectorAll(".box");
 boxs.forEach((e, i) => {
   e.style.order = randomArray[i];
 });
@@ -65,20 +81,7 @@ window.addEventListener("click", (e) => {
 });
 //#####################################################
 //knowing if the game is done
-let game = document.querySelector("section");
-let result = document.querySelector(".result");
-
-setTimeout(() => {
-  game.classList.add("congrats");
-  setTimeout(() => {
-    game.classList.remove("congrats");
-  }, 2400);
-}, 600);
-
-
-
 window.addEventListener("click", (e) => {
-
   if (goodTries == 10) {
     game.classList.add("congrats");
     setTimeout(() => {
@@ -91,7 +94,6 @@ window.addEventListener("click", (e) => {
 });
 //#####################################################
 //restarting
-let playAgain = document.querySelector(".result button");
 playAgain.onclick = () => {
   window.location.reload();
 };
