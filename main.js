@@ -11,7 +11,7 @@ let StartAnimation = flippingGen();
 // get user name from prompt
 start.onclick = () => {
   startWindow.style.display = "none";
-  userName.innerHTML = startInput.value;
+  userName.innerHTML = startInput.value || "handsome";
   StartAnimation.next();
 };
 
