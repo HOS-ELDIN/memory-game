@@ -117,6 +117,7 @@ section.game {
   max-height: calc(100vh - 80px);
   margin-inline: auto;
   position: relative;
+  pointer-events: none;
 }
 
 .game .box {

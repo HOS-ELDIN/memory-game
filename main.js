@@ -1,23 +1,28 @@
-let startWindow = document.querySelector(".start");
-let startInput = document.querySelector(".start input");
-let start = document.querySelector(".start button");
-let userName = document.querySelector(".name span");
-let boxs = document.querySelectorAll(".box");
-let game = document.querySelector("section");
-let result = document.querySelector(".result");
-let playAgain = document.querySelector(".result button");
-let StartAnimation = flippingGen();
+let startWindow = document.querySelector(".start"),
+  startInput = document.querySelector(".start input"),
+  start = document.querySelector(".start button"),
+  userName = document.querySelector(".name span"),
+  boxs = document.querySelectorAll(".box"),
+  game = document.querySelector("section"),
+  result = document.querySelector(".result"),
+  playAgain = document.querySelector(".result button"),
+  StartAnimation = flippingGen(),
+  wrongTries = 0,
+  PageWrongTries = document.querySelector(".tries span");
 
 // get user name from prompt
 start.onclick = () => {
   startWindow.style.display = "none";
   userName.innerHTML = startInput.value || "handsome";
   StartAnimation.next();
+  
 };
 
 //#####################################################
 //creating random array
 // let randomArray = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
+// let orderedArray = [...Array(20).keys()]
+// let orderedArray = [...Array(boxs.length).keys()]
 let randomArray = [];
 for (let i = 0; randomArray.length < 20; i++) {
   let randomNumber = Math.floor(Math.random() * 20);
@@ -33,58 +38,52 @@ boxs.forEach((e, i) => {
 });
 //#####################################################
 // click only two boxs
-let count = 0;
-window.addEventListener("click", (e) => {
-  if (e.target.className == "front") {
-    e.target.parentElement.classList.add("flipped");
-  }
-  count = 0;
-  boxs.forEach((e) => {
-    if (e.classList.contains("flipped")) {
-      count++;
-      // console.log(count);
-    }
-  });
-  boxs.forEach((e) => {
-    if (count == 2) {
-      setTimeout(() => {
+boxs.forEach((box) => {
+  box.addEventListener("click", () => {
+    box.classList.add("flipped");
+    let flippedArray = document.querySelectorAll(".flipped");
+    compare(flippedArray);
+    let doneArray = document.querySelectorAll(".done");
+
+    boxs.forEach((e) => {
+      if (flippedArray.length == 2) {
+        setTimeout(() => {
+          e.classList.remove("flipped");
+        }, 1200);
+      }
+      if (flippedArray.length > 2) {
         e.classList.remove("flipped");
-      }, 1200);
-    }
-    if (count > 2) {
-      e.classList.remove("flipped");
-    }
+      }
+    });
+    isGmaeDone(doneArray);
   });
 });
+
 //#####################################################
 // comparing the two flipped boxs and keep them flipped and count the wrong tries
-let wrongTries = 0,
-  goodTries = 0,
-  PageWrongTries = document.querySelector(".tries span");
-window.addEventListener("click", (e) => {
-  let flippedArray = document.querySelectorAll(".flipped .back");
-  if (count == 2) {
+function compare(flippedArray) {
+  if (flippedArray.length === 2) {
     if (flippedArray[0].innerHTML === flippedArray[1].innerHTML) {
-      goodTries++;
+      // goodTries++;
       flippedArray.forEach((e) => {
-        e.parentElement.classList.add("done");
+        e.classList.add("done");
       });
     } else {
       wrongTries++;
       PageWrongTries.innerHTML = wrongTries;
     }
   }
-});
+}
 //#####################################################
 //knowing if the game is done
-window.addEventListener("click", (e) => {
-  if (goodTries == 10 || false) {
-    rotating(4800,false)
+function isGmaeDone(doneArray) {
+  if (doneArray.length == 20 || false) {
+    rotating(4800, false);
     setTimeout(() => {
       result.classList.add("show");
     }, 5200);
   }
-});
+}
 //#####################################################
 //restarting
 playAgain.onclick = () => {
@@ -99,9 +98,10 @@ function* flippingGen() {
     yield flipOnebyOne(boxs[i]);
     i++;
   }
-  yield rotating(2400,true);
+  yield rotating(2400, true);
 
-  yield returnAll();
+  yield returnAll()
+  yield game.style.pointerEvents = "all";
 }
 // function to start generator
 function flipOnebyOne(e) {
@@ -111,14 +111,14 @@ function flipOnebyOne(e) {
   }, 300);
 }
 // function to make rotating move
-function rotating(time,next) {
+function rotating(time, next) {
   game.classList.add("congrats");
   setTimeout(() => {
     game.classList.remove("congrats");
     if (next == true) {
-      StartAnimation.next()
+      StartAnimation.next();
     }
-  },time);
+  }, time);
 }
 // function to return all
 function returnAll() {
@@ -126,29 +126,6 @@ function returnAll() {
     boxs.forEach((e) => {
       e.classList.remove("flipped");
     });
+    StartAnimation.next()
   }, 600);
 }
-
-
-// console.log(flipp.next());
-// console.log(flipp.next());
-// console.log(flipp.next());
-// console.log(flipp.next());
-// console.log(flipp.next());
-// console.log(flipp.next());
-// console.log(flipp.next());
-// console.log(flipp.next());
-// console.log(flipp.next());
-// console.log(flipp.next());
-// console.log(flipp.next());
-// console.log(flipp.next());
-// console.log(flipp.next());
-// console.log(flipp.next());
-// console.log(flipp.next());
-// console.log(flipp.next());
-// console.log(flipp.next());
-// console.log(flipp.next());
-// console.log(flipp.next());
-// console.log(flipp.next());
-// console.log(flipp.next());
-// console.log(flipp.next());
