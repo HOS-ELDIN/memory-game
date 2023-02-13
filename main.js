@@ -121,12 +121,14 @@ function compare(flippedArray) {
   if (flippedArray.length === 2) {
     if (flippedArray[0].innerHTML === flippedArray[1].innerHTML) {
       // goodTries++;
+      document.querySelector(".correct").play()
       flippedArray.forEach((e) => {
         e.classList.add("done");
       });
     } else {
       wrongTries++;
       PageWrongTries.innerHTML = wrongTries;
+      document.querySelector(".wrong").play()
     }
   }
 }
@@ -142,7 +144,8 @@ function resetFlip(arr) {
 function isGmaeDone(doneArray) {
   if (doneArray.length == 20 || false) {
     takeStep.next();
-    rotating(4800, false);
+    document.querySelector(".game-finish").play()
+        rotating(4800, false);
     setTimeout(() => {
       result.classList.add("show");
     }, 5200);
