@@ -91,16 +91,17 @@ body {
   max-width: 900px;
   margin-inline: auto;
 }
-.head .name {
-  color: var(--dark-color);
-  font-weight: bolder;
-}
-.head .name span {
-  text-transform: capitalize;
-}
+.head .name ,
 .head .tries {
   color: var(--dark-color);
+  font-weight: bolder;
+  text-transform: capitalize;
+}
+
+.head > span {
+  color: var(--lite-color);
   font-weight: bold;
+  letter-spacing: 2px;
 }
 
 .head .tries span {
