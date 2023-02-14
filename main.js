@@ -24,13 +24,14 @@ start.onclick = () => {
 // let orderedArray = [...Array(boxs.length).keys()]
 //creating random array
 let randomArray = [];
+// let randomArray = [4, 11, 1, 6, 3, 0, 13, 12, 8, 2, 10, 7, 15, 5, 18, 14, 16, 19, 9, 17];
 for (let i = 0; randomArray.length < 20; i++) {
   let randomNumber = Math.floor(Math.random() * 20);
   if (randomArray.includes(randomNumber) == false) {
     randomArray.push(randomNumber);
   }
 }
-
+// console.log(randomArray);
 //#####################################################
 //give random order to boxs
 boxs.forEach((e, i) => {
@@ -149,7 +150,7 @@ function isGmaeDone(doneArray) {
         // rotating(4800, false);
     setTimeout(() => {
       result.classList.add("show");
-    }, 5200);
+    }, 3000);
   }
 }
 //#####################################################
