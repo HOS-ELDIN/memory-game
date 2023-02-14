@@ -145,7 +145,8 @@ function isGmaeDone(doneArray) {
   if (doneArray.length == 20 || false) {
     takeStep.next();
     document.querySelector(".game-finish").play()
-        rotating(4800, false);
+        rotating(2400, false);
+        // rotating(4800, false);
     setTimeout(() => {
       result.classList.add("show");
     }, 5200);
