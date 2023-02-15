@@ -41,7 +41,10 @@ boxs.forEach((e, i) => {
 // click only two boxs
 boxs.forEach((box) => {
   box.addEventListener("click", () => {
-    box.classList.add("flipped");
+    console.log(box.classList.contains("flipped"));
+    if (box.classList.contains("done") === false) {
+      box.classList.add("flipped");
+    }
     let flippedArray = document.querySelectorAll(".flipped");
     compare(flippedArray);
     let doneArray = document.querySelectorAll(".done");
@@ -103,15 +106,15 @@ function returnAll() {
 // timer function
 function timer() {
   time++;
-  
+
   min = Intl.NumberFormat("en", {
     minimumIntegerDigits: 2,
   }).format(Math.floor(time / 60));
-  
+
   sec = Intl.NumberFormat("en", {
     minimumIntegerDigits: 2,
   }).format(time % 60);
-  
+
   // console.log(min, sec);
   pageTimer.innerHTML = `${min}:${sec}`;
 }
@@ -122,14 +125,14 @@ function compare(flippedArray) {
   if (flippedArray.length === 2) {
     if (flippedArray[0].innerHTML === flippedArray[1].innerHTML) {
       // goodTries++;
-      document.querySelector(".correct").play()
+      document.querySelector(".correct").play();
       flippedArray.forEach((e) => {
         e.classList.add("done");
       });
     } else {
       wrongTries++;
       PageWrongTries.innerHTML = wrongTries;
-      document.querySelector(".wrong").play()
+      document.querySelector(".wrong").play();
     }
   }
 }
@@ -145,9 +148,9 @@ function resetFlip(arr) {
 function isGmaeDone(doneArray) {
   if (doneArray.length == 20 || false) {
     takeStep.next();
-    document.querySelector(".game-finish").play()
-        rotating(2400, false);
-        // rotating(4800, false);
+    document.querySelector(".game-finish").play();
+    rotating(2400, false);
+    // rotating(4800, false);
     setTimeout(() => {
       result.classList.add("show");
     }, 3000);

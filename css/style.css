@@ -167,6 +167,7 @@ section.game {
   -moz-transition: transform 1s;
   -ms-transition: transform 1s;
   -o-transition: transform 1s;
+  pointer-events: none;
 }
 
 .congrats .box {
