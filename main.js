@@ -41,7 +41,6 @@ boxs.forEach((e, i) => {
 // click only two boxs
 boxs.forEach((box) => {
   box.addEventListener("click", () => {
-    console.log(box.classList.contains("flipped"));
     if (box.classList.contains("done") === false) {
       box.classList.add("flipped");
     }
